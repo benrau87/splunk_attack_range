@@ -1,6 +1,6 @@
 #!/bin/bash
 sudo apt-get update 
-sudo apt-get install -y python3-dev python3-pip linux-headers-generic python-dev unzip python-pip virtualbox virtualbox-dkms python-virtualenv git ansible
+sudo apt-get install -y python3-dev python3-pip linux-headers-generic rpm python-dev unzip python-pip virtualbox virtualbox-dkms python-virtualenv git ansible
 sudo gem install winrm-elevated
 sudo gem install winrm
 sudo rpm -ivh vagrant_2.2.7_x86_64.rpm
