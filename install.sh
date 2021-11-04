@@ -4,8 +4,8 @@ read PASS
 sed -i "s/replaceme/${PASS}/g" attack_range_local.conf
 echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf
 sudo sysctl -p 
-sudo iptables -t nat -A PREROUTING -p tcp --sport 53 -j DNAT --to-destination 127.0.0.53:53
-sudo iptables -t nat -A PREROUTING -p udp --sport 53 -j DNAT --to-destination 127.0.0.53:53
+sudo iptables -t nat -A PREROUTING -p tcp --dport 53 -j DNAT --to-destination 1.1.1.1:53
+sudo iptables -t nat -A PREROUTING -p udp --dport 53 -j DNAT --to-destination 1.1.1.1:53
 sudo iptables -t nat -A POSTROUTING -j MASQUERADE
 sudo apt-get update 
 sudo apt-get install -y python3-dev python3-pip linux-headers-generic python-dev unzip python-pip virtualbox virtualbox-dkms python-virtualenv git ansible rpm
