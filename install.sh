@@ -1,4 +1,6 @@
 #!/bin/bash
+echo -e "What would you like to use as the global password?"
+read pass
 sudo apt-get update 
 sudo apt-get install -y python3-dev python3-pip linux-headers-generic python-dev unzip python-pip virtualbox virtualbox-dkms python-virtualenv git ansible rpm
 sudo gem install winrm-elevated
