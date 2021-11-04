@@ -9,7 +9,9 @@ sudo gem install winrm
 sudo ln -sfn /usr/bin/python3.6 /usr/bin/python
 wget https://releases.hashicorp.com/vagrant/2.2.18/vagrant_2.2.18_x86_64.rpm
 sudo rpm -ivh vagrant_2.2.18_x86_64.rpm
-git clone https://github.com/splunk/attack_range_local && cd attack_range_local
+git clone https://github.com/splunk/attack_range_local
+mv attack_range_local.conf attack_range_local/
+cd attack_range_local
 sudo python -m pip install -r requirements.txt
 sudo ansible-galaxy collection install community.windows
 chmod +x attack_range_local.py
