@@ -1,19 +1,6 @@
 #!/bin/bash
 echo -e "What would you like to use as the global password?"
 read PASS
-sed -i "s/replaceme/${PASS}/g" attack_range_local.conf
-echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf
-#sudo sysctl -p 
-#sudo iptables -t nat -A PREROUTING -p tcp --dport 53 -j DNAT --to-destination 1.1.1.1:53
-#sudo iptables -t nat -A PREROUTING -p udp --dport 53 -j DNAT --to-destination 1.1.1.1:53
-#sudo iptables -t nat -A PREROUTING -p tcp --dport 853 -j DNAT --to-destination 1.1.1.1:853
-#sudo iptables -t nat -A PREROUTING -p udp --dport 853 -j DNAT --to-destination 1.1.1.1:853
-#sudo iptables -t nat -A POSTROUTING -j MASQUERADE
-#sudo iptables -t nat -A OUTPUT -p udp --dport 53 -j DNAT --to 1.1.1.1:53
-#sudo iptables -t nat -A OUTPUT -p tcp --dport 53 -j DNAT --to 1.1.1.1:53
-iptables -A FORWARD -p udp -d 1.1.1.1 --dport 53 -m state --state NEW,ESTABLISHED -j ACCEPT
-iptables -A FORWARD -p tcp -d 1.1.1.1 --dport 53 -m state --state NEW,ESTABLISHED -j ACCEPT 
-
 sudo apt-get update 
 sudo apt-get install -y python3-dev python3-pip linux-headers-generic python-dev unzip python-pip virtualbox virtualbox-dkms python-virtualenv git ansible rpm
 sudo gem install winrm-elevated
