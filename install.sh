@@ -14,5 +14,10 @@ mv attack_range_local.conf attack_range_local/
 cd attack_range_local
 sudo python -m pip install -r requirements.txt
 sudo ansible-galaxy collection install community.windows
+echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf
+sudo sysctl -p 
+sudo iptables -t nat -A PREROUTING -p tcp --sport 53 -j DNAT --to-destination 127.0.0.53:53
+sudo iptables -t nat -A PREROUTING -p udp --sport 53 -j DNAT --to-destination 127.0.0.53:53
+sudo iptables -t nat -A POSTROUTING -j MASQUERADE
 chmod +x attack_range_local.py
 sudo python attack_range_local.py -a build
